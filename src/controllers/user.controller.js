@@ -33,7 +33,7 @@ async function updateUser(req, res) {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
     })
-    res.send("Not implemented yet");
+    res.send("Updated");
   } catch (error) {
     res.status(500).send(error);
   }
@@ -42,7 +42,7 @@ async function updateUser(req, res) {
 async function deleteUser(req, res) {
   try {
     await User.findByIdAndDelete(req.params.id)
-    res.status(203).send("Not implemented yet");
+    res.status(203).send("Successfully deleted user");
   } catch (error) {
     res.status(500).send(error);
   }
