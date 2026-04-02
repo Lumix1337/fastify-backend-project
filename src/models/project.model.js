@@ -26,9 +26,8 @@ const ProjectSchema = new mongoose.Schema(
       required: true,
       validate: {
         validator: async function (v) {
-          const user = await mongoose.model("User").findById(v); // используем модель через mongoose
+          const user = await mongoose.model("User").findById(v);
           if (!user) return false;
-          // Проверяем оба варианта регистра на всякий случай
           return ["Admin", "Project Manager", "Project manager"].includes(
             user.role,
           );

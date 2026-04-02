@@ -2,11 +2,9 @@ import Project from "../models/project.model.js";
 import User from "../models/user.model.js";
 
 async function createProject(req, reply) {
-  // используем reply для Fastify
   try {
     const projectManager = await User.findById(req.body.projectManager);
 
-    // Проверяем, существует ли менеджер и есть ли у него нужная роль
     const allowedRoles = ["admin", "project manager"];
     const userRole = projectManager.role
       ? projectManager.role.toLowerCase()
@@ -28,7 +26,7 @@ async function createProject(req, reply) {
     }
 
     const project = new Project(req.body);
-    await project.save(); // НЕ ЗАБУДЬ СОХРАНИТЬ В БАЗУ!
+    await project.save();
     reply.code(201).send(project);
   } catch (error) {
     reply.status(400).send(error);
