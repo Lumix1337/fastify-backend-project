@@ -1,0 +1,12 @@
+# Зависимости (их слишком много, pnpm install скачает их сам)
+node_modules/
+
+# Секретные данные (САМОЕ ВАЖНОЕ)
+.env
+*.env
+
+# Логи и временные файлы
+npm-debug.log*
+pnpm-debug.log*
+dist/
+.DS_Store
